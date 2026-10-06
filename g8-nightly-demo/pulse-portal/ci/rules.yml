@@ -9,9 +9,9 @@
 #   composer  PHP dependencies and `composer audit`
 #   cspell    spell check for docs
 #
-# Node/npm is NOT installed.
+#   npm       front-end build and `npm audit` (Node LTS)
 variables:
-  RUNNER_TOOLS: "docker helm composer cspell"
+  RUNNER_TOOLS: "docker helm composer cspell npm"
 
 .runner:
   tags: [pulse-shell]

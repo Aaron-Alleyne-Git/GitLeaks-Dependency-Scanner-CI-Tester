@@ -40,9 +40,9 @@ G8 fails the pipeline when any of these is true:
 | What | Count |
 |---|---|
 | QA dummy secrets allowlisted in `.gitleaks.toml` | 6 |
-| Open gitleaks findings (must be 0 for G8 to pass) | 3 |
-| of which in `tests/security/log_redaction_security.php` | 3 |
-| Active entries in `ci/dependency-exceptions.json` | 0 |
+| Open gitleaks findings (must be 0 for G8 to pass) | 0 |
+| of which in `tests/security/log_redaction_security.php` | 0 |
+| Active entries in `ci/dependency-exceptions.json` | 3 |
 <!-- g8-counts:end -->
 
 To refresh the table, run `ci/scripts/docs-counts.sh --write` and commit the result.

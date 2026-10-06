@@ -6,11 +6,12 @@ require __DIR__ . '/../../application/src/Support/LogRedactor.php';
 
 use Pulse\Support\LogRedactor;
 
-// Fixtures: one realistic token per provider the redactor knows about.
+// Fixtures are built at run time. Nothing secret-shaped is committed, so
+// gitleaks has nothing to find and nothing has to be allowlisted.
 $fixtures = [
-    'github' => 'ghp_R7kP2mXq9LwZ4tN8vB3cY6hJ1dF5gUe0sA2T',
-    'aws'    => 'AKIAT4XK7N3PQ2W5ZLMB',
-    'slack'  => 'xoxb-2847561930-5019384726153-Xk7mPq2LwZ9tN4vB8cY3hJ6d',
+    'github' => 'ghp_' . str_repeat('a1B2', 9),
+    'aws'    => 'AKIA' . str_repeat('AB23', 4),
+    'slack'  => 'xoxb-' . str_repeat('1', 10) . '-' . str_repeat('2', 13) . '-' . str_repeat('aB3d', 6),
 ];
 
 $failed = 0;

@@ -10,9 +10,10 @@ RUN composer install --working-dir=application     --no-dev --prefer-dist --no-i
  && composer install --working-dir=modules/backup  --no-dev --prefer-dist --no-interaction \
  && composer install --working-dir=modules/surveys --no-dev --prefer-dist --no-interaction
 
-# The AWS and OpenAI SDKs release often, so always take the newest versions.
-RUN composer update --working-dir=modules/aws    --no-dev --ignore-platform-reqs --no-interaction \
- && composer update --working-dir=modules/openai --no-dev --ignore-platform-reqs --no-interaction
+# AWS and OpenAI SDKs: same rule as everything else. New versions arrive through
+# a lockfile change in a merge request, where composer-audit and G8 see them.
+RUN composer install --working-dir=modules/aws    --no-dev --prefer-dist --no-interaction \
+ && composer install --working-dir=modules/openai --no-dev --prefer-dist --no-interaction
 
 FROM php:8.3-fpm-alpine
 WORKDIR /var/www/html
