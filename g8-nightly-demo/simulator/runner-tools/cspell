@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Simulator stand-in for cspell. Present so the runner matches ci/rules.yml.
+echo "cspell (simulated)"

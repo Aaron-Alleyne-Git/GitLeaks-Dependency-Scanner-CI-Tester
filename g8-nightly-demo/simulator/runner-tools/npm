@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Simulator stand-in for npm on the runner.
+# `npm audit` replays a report recorded from the real `npm audit --json`
+# against this repo's package-lock.json.
+case "${1:-}" in
+  --version) echo "10.9.4" ;;
+  audit)     cat "$SIM_DIR/recordings/npm-audit.json"; exit 1 ;;
+  *)         echo "simulated npm: only '--version' and 'audit' are implemented" >&2; exit 2 ;;
+esac

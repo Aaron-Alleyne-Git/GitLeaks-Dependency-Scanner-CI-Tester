@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Simulator stand-in for composer on the runner.
+# `composer audit` replays a recorded report for the component it is run in.
+dir="."
+cmd=""
+for arg in "$@"; do
+  case "$arg" in
+    --working-dir=*) dir="${arg#--working-dir=}" ;;
+    --version)       echo "Composer version 2.8.12 (simulated)"; exit 0 ;;
+    -*)              ;;
+    *)               [ -z "$cmd" ] && cmd="$arg" ;;
+  esac
+done
+if [ "$cmd" != "audit" ]; then
+  echo "simulated composer: only 'audit' is implemented" >&2
+  exit 2
+fi
+rec="$SIM_DIR/recordings/composer-audit/$(echo "$dir" | tr '/' '-').json"
+if [ ! -f "$rec" ]; then
+  echo "simulated composer: no recording for $dir" >&2
+  exit 2
+fi
+cat "$rec"
+# Like the real command: non-zero when advisories were found.
+if grep -q '"advisoryId"' "$rec"; then exit 1; fi
+exit 0

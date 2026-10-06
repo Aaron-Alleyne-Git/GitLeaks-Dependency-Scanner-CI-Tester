@@ -1,0 +1,9 @@
+{
+    "name": "pulse/module-openai",
+    "description": "OpenAI integrations",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "openai-php/client": "^0.20"
+    }
+}

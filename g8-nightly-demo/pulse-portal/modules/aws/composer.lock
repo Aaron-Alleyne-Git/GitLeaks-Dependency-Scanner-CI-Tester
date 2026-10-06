@@ -1,0 +1,20 @@
+{
+    "_readme": [
+        "Example lockfile for the G8 demo, trimmed to the one package this",
+        "component's example is about. It is not installable as-is."
+    ],
+    "content-hash": "bd238f18a1f3de8cda752ab32357fcd6",
+    "packages": [
+        {
+            "name": "aws/aws-sdk-php",
+            "version": "3.372.0",
+            "type": "library"
+        }
+    ],
+    "packages-dev": [],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "platform": {
+        "php": "^8.2"
+    }
+}

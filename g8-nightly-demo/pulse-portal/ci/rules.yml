@@ -1,0 +1,40 @@
+# Shared runner description and job rules. Included by .gitlab-ci.yml.
+
+# --- Runner -----------------------------------------------------------------
+# Jobs run on the shell runner tagged "pulse-shell". Shell executor means a job
+# can only use what is installed on that host. Installed today:
+#
+#   docker    image builds
+#   helm      chart lint and deploy
+#   composer  PHP dependencies and `composer audit`
+#   cspell    spell check for docs
+#
+# Node/npm is NOT installed.
+variables:
+  RUNNER_TOOLS: "docker helm composer cspell"
+
+.runner:
+  tags: [pulse-shell]
+
+# --- Rules ------------------------------------------------------------------
+.rules:always:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# Dependency audits: every night, and on merge requests that touch a lockfile.
+.rules:composer-audit:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - "**/composer.lock"
+        - ci/dependency-exceptions.json
+
+.rules:npm-audit:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - package-lock.json

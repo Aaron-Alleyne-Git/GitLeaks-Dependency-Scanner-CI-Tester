@@ -1,0 +1,60 @@
+# pulse-portal pipeline. Only phases 1 and 2 of 13 are shown in this example.
+include:
+  - local: ci/rules.yml
+
+stages:
+  - lint        # phase 1
+  - security    # phase 2: scanners write reports, they do not decide
+  - gate        # phase 2: G8 reads the reports and decides
+  - build       # phase 3 onwards (not part of this example)
+
+default:
+  tags: [pulse-shell]
+
+spellcheck:
+  stage: lint
+  extends: .rules:always
+  script:
+    - cspell "docs/**/*.md" README.md
+
+secrets-scan:
+  stage: security
+  extends: .rules:always
+  script:
+    - ci/scripts/phase-02-secrets.sh
+  artifacts:
+    when: always
+    paths: [reports/]
+
+composer-audit:
+  stage: security
+  extends: .rules:composer-audit
+  script:
+    - ci/scripts/phase-02-composer-audit.sh
+  artifacts:
+    when: always
+    paths: [reports/]
+
+npm-audit:
+  stage: security
+  extends: .rules:npm-audit
+  script:
+    - ci/scripts/phase-02-npm-audit.sh
+  artifacts:
+    when: always
+    paths: [reports/]
+
+# G8. `when: always` so the gate still runs and reports on everything when a
+# scanner job has failed. A scanner that produced no report fails the gate.
+g8-gate:
+  stage: gate
+  extends: .rules:always
+  when: always
+  script:
+    - ci/scripts/g8-gate.sh
+
+build-php-image:
+  stage: build
+  extends: .rules:always
+  script:
+    - docker build -f docker/Dockerfile.php -t "$CI_REGISTRY_IMAGE/portal-php:$CI_COMMIT_SHORT_SHA" .

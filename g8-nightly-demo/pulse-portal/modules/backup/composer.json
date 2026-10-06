@@ -1,0 +1,9 @@
+{
+    "name": "pulse/module-backup",
+    "description": "Scheduled backups to object storage",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "league/flysystem": "^1.1"
+    }
+}

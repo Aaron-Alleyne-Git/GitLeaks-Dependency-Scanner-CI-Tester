@@ -1,0 +1,23 @@
+{
+  "_readme": "Time-boxed exceptions for dependency advisories that G8 would otherwise block on. The policy block is enforced by ci/scripts/g8-gate.sh. An entry that breaks the policy fails the gate.",
+  "policy": {
+    "max_active_exceptions": 5,
+    "max_days": {
+      "critical": 14,
+      "high": 30
+    },
+    "min_reason_length": 30,
+    "required_fields": [
+      "advisory",
+      "package",
+      "path",
+      "severity",
+      "reason",
+      "owner",
+      "ticket",
+      "added",
+      "expires"
+    ]
+  },
+  "exceptions": []
+}

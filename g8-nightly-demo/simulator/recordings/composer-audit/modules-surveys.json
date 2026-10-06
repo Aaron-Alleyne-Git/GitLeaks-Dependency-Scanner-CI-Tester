@@ -1,0 +1,87 @@
+{
+    "advisories": {
+        "dompdf/dompdf": [
+            {
+                "advisoryId": "PKSA-4jrs-y99s-q8j6",
+                "packageName": "dompdf/dompdf",
+                "affectedVersions": "<2.0.2",
+                "title": "Dompdf vulnerable to URI validation failure on SVG parsing",
+                "cve": "CVE-2023-23924",
+                "link": "https://github.com/advisories/GHSA-3cw5-7cxw-v5qg",
+                "reportedAt": "2023-01-31T14:30:00+00:00",
+                "severity": "critical"
+            },
+            {
+                "advisoryId": "PKSA-7ztm-rpt3-qqzk",
+                "packageName": "dompdf/dompdf",
+                "affectedVersions": "<2.0.4",
+                "title": "Denial of service caused by infinite recursion when parsing SVG images",
+                "cve": "CVE-2023-50262",
+                "link": "https://nvd.nist.gov/vuln/detail/CVE-2023-50262",
+                "reportedAt": "2023-12-12T09:17:00+00:00",
+                "severity": "medium"
+            },
+            {
+                "advisoryId": "PKSA-cv56-2228-pzr6",
+                "packageName": "dompdf/dompdf",
+                "affectedVersions": "<3.1.6",
+                "title": "Embedded SVG images can leak existence of files and directories within the filesystem",
+                "cve": "CVE-2026-59943",
+                "link": "https://github.com/advisories/GHSA-j8qw-6jw8-r297",
+                "reportedAt": "2026-07-22T22:52:44+00:00",
+                "severity": "medium"
+            },
+            {
+                "advisoryId": "PKSA-6r8f-nxsb-67bq",
+                "packageName": "dompdf/dompdf",
+                "affectedVersions": "<3.1.6",
+                "title": "Denial of Service (DoS) via Resource Exhaustion using Oversized Image Bitmaps",
+                "cve": "CVE-2026-59942",
+                "link": "https://github.com/advisories/GHSA-f5gf-2cj8-52g2",
+                "reportedAt": "2026-07-22T22:51:40+00:00",
+                "severity": "medium"
+            },
+            {
+                "advisoryId": "PKSA-gh7h-hhy4-byg7",
+                "packageName": "dompdf/dompdf",
+                "affectedVersions": "<3.1.6",
+                "title": "Uncontrolled resource consumption based on declared BMP dimensions",
+                "cve": "CVE-2026-59941",
+                "link": "https://github.com/advisories/GHSA-8hg6-c449-896m",
+                "reportedAt": "2026-07-22T22:50:34+00:00",
+                "severity": "medium"
+            },
+            {
+                "advisoryId": "PKSA-mwt3-h9tv-kx78",
+                "packageName": "dompdf/dompdf",
+                "affectedVersions": "<3.1.6",
+                "title": "Local file read due to improper file path validation in SVG images encoded as data-URI",
+                "cve": "CVE-2026-56722",
+                "link": "https://github.com/advisories/GHSA-cx96-42px-69fm",
+                "reportedAt": "2026-07-22T21:30:01+00:00",
+                "severity": "medium"
+            },
+            {
+                "advisoryId": "PKSA-hp6n-n4kz-21wk",
+                "packageName": "dompdf/dompdf",
+                "affectedVersions": "<3.1.6",
+                "title": "File existence oracle via font-face stylesheet declaration",
+                "cve": "CVE-2026-55555",
+                "link": "https://github.com/advisories/GHSA-7x2p-4jvh-6384",
+                "reportedAt": "2026-07-22T21:07:07+00:00",
+                "severity": "low"
+            },
+            {
+                "advisoryId": "PKSA-mckv-s5hg-868k",
+                "packageName": "dompdf/dompdf",
+                "affectedVersions": "<3.1.6",
+                "title": "Chroot Validation Bypass",
+                "cve": "CVE-2026-55554",
+                "link": "https://github.com/advisories/GHSA-wvh6-f5jh-8gw4",
+                "reportedAt": "2026-07-22T21:06:48+00:00",
+                "severity": "low"
+            }
+        ]
+    },
+    "abandoned": []
+}

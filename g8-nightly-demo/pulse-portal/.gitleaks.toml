@@ -1,0 +1,32 @@
+title = "pulse-portal secrets scanning"
+
+# Keep the built-in rules. Without this block a custom config REPLACES them.
+[extend]
+useDefault = true
+
+# Generated output and third-party code: never scanned.
+[[allowlists]]
+description = "Scanner reports, installed dependencies, and this file"
+paths = [
+  '''^reports/''',
+  '''^\.gitleaks\.toml$''',
+  '''(^|/)vendor/''',
+  '''(^|/)node_modules/''',
+]
+
+# qa-dummies:start
+# QA sandbox dummies. Each entry is the EXACT value of one dummy secret, so
+# nothing else in the same file (or anywhere else) is excused by accident.
+# Adding a line here needs a reviewer from the security group.
+[[allowlists]]
+description = "QA sandbox dummy credentials (exact values)"
+regexTarget = "secret"
+regexes = [
+  '''^AKIAQADUMMY7N3XK2P5W$''',                      # config/qa.env  QA_AWS_ACCESS_KEY_ID
+  '''^qaDummy9xT2mKq7LpZ4vRw8NsB3cYh6JdF1gUe0a$''',  # config/qa.env  QA_AWS_SECRET_ACCESS_KEY
+  '''^glpat-qaDummy7xK2mPq9LwZ4t$''',                # config/qa.env  QA_GITLAB_TOKEN
+  '''^sk_test_qaDummy4eC39HqLyjWDarjtT1$''',         # config/qa.env  QA_STRIPE_SECRET_KEY
+  '''^https://hooks\.slack\.com/services/T00QADUMMY/B00QADUMMY/qaDummy7xK2mPq9LwZ4tR8vN$''',  # helm/values-qa.yaml
+  '''^pulse_qa_7f3K9xQ2mL8vZ4tR6wN1bY5c$''',         # tests/fixtures/qa_users.php
+]
+# qa-dummies:end

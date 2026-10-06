@@ -1,0 +1,9 @@
+{
+    "name": "pulse/portal",
+    "description": "Pulse Portal core application",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "guzzlehttp/guzzle": "^7.15"
+    }
+}

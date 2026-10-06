@@ -1,0 +1,27 @@
+{
+    "advisories": {
+        "league/flysystem": [
+            {
+                "advisoryId": "PKSA-pwh8-d4fr-nywn",
+                "packageName": "league/flysystem",
+                "affectedVersions": "<1.1.4|>=2.0.0,<2.1.1",
+                "title": "TOCTOU Race Condition enabling remote code execution",
+                "cve": "CVE-2021-32708",
+                "link": "https://github.com/thephpleague/flysystem/security/advisories/GHSA-9f46-5r25-5wfm",
+                "reportedAt": "2021-06-23T23:56:59+00:00",
+                "severity": "critical"
+            },
+            {
+                "advisoryId": "PKSA-w9tt-7782-78jx",
+                "packageName": "league/flysystem",
+                "affectedVersions": "<=3.35.2",
+                "title": "Flysystem: WhitespacePathNormalizer's control-character (CorruptedPathDetected) check is bypassed by malformed UTF-8 in the path, affecting every adapter",
+                "cve": "CVE-2026-102601",
+                "link": "https://github.com/advisories/GHSA-cxf4-7mrp-vvpr",
+                "reportedAt": "2026-09-29T18:10:14+00:00",
+                "severity": "low"
+            }
+        ]
+    },
+    "abandoned": []
+}

@@ -1,0 +1,9 @@
+# Helm values for the QA namespace. Dummy integrations only.
+environment: qa
+replicaCount: 1
+image:
+  repository: registry.example.com/pulse/portal-php
+  tag: qa
+notifications:
+  # QA mock webhook, not a real Slack workspace. Listed in .gitleaks.toml.
+  slackWebhook: https://hooks.slack.com/services/T00QADUMMY/B00QADUMMY/qaDummy7xK2mPq9LwZ4tR8vN

@@ -1,0 +1,9 @@
+{
+    "name": "pulse/module-surveys",
+    "description": "Survey builder and PDF export",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "dompdf/dompdf": "^2.0"
+    }
+}
